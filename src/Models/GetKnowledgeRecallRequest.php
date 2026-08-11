@@ -22,10 +22,16 @@ class GetKnowledgeRecallRequest extends Model
      * @var int
      */
     public $topk;
+
+    /**
+     * @var string
+     */
+    public $user;
     protected $_name = [
         'DBClusterId' => 'DBClusterId',
         'question' => 'Question',
         'topk' => 'Topk',
+        'user' => 'User',
     ];
 
     public function validate()
@@ -46,6 +52,10 @@ class GetKnowledgeRecallRequest extends Model
 
         if (null !== $this->topk) {
             $res['Topk'] = $this->topk;
+        }
+
+        if (null !== $this->user) {
+            $res['User'] = $this->user;
         }
 
         return $res;
@@ -69,6 +79,10 @@ class GetKnowledgeRecallRequest extends Model
 
         if (isset($map['Topk'])) {
             $model->topk = $map['Topk'];
+        }
+
+        if (isset($map['User'])) {
+            $model->user = $map['User'];
         }
 
         return $model;
